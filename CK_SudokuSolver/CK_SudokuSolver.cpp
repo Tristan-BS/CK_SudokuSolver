@@ -8,16 +8,16 @@ using namespace std;
 
                                         // Function to check if it is safe to place a number in a cell
 
-bool isSafe(vector<vector<int>>& grid, int row, int col, int num) {
-    for (int x = 0; x < N; x++) {
-        if (grid[row][x] == num || grid[x][col] == num) {
+bool isSafe(vector<vector<int>>& grid, int row, int col, int num) { // Function to check if it is safe to place a number in a cell
+	for (int x = 0; x < N; x++) {                                   // Check if the number is already present in the row or column
+		if (grid[row][x] == num || grid[x][col] == num) {           // If the number is already present in the row or column
             return false;
         }
     }
-    int startRow = row - row % 3, startCol = col - col % 3;
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            if (grid[i + startRow][j + startCol] == num) {
+	int startRow = row - row % 3, startCol = col - col % 3;		// Check if the number is already present in the 3x3 grid
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			if (grid[i + startRow][j + startCol] == num) {	    // If the number is already present in the 3x3 grid
                 return false;
             }
         }
